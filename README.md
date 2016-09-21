@@ -37,7 +37,7 @@ https://github.com/poldracklab/mriqc/issues.
 TBD
 
 ### Usage
-This App has the following comman line arguments:
+This App has the following command line arguments:
 
 		usage: run.py [-h]
 		              [--participant_label PARTICIPANT_LABEL [PARTICIPANT_LABEL ...]]
