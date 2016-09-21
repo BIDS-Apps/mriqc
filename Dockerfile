@@ -25,8 +25,7 @@
 # CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-FROM oesteban/crn_base:freesurfer
+FROM poldracklab/neuroimaging-core:freesurfer-0.0.1
 
 WORKDIR /root
 
@@ -38,7 +37,7 @@ ENV PATH /usr/local/miniconda/bin:$PATH
 
 # Create conda environment, use nipype's conda-forge channel
 RUN conda config --add channels conda-forge && \
-    conda install -y numpy scipy lockfile nipype matplotlib && \
+    conda install -y numpy scipy lockfile matplotlib && \
     pip install mriqc[all] && \
     python -c "from matplotlib import font_manager" && \
     python -c "from mriqc.data import get_mni_template; get_mni_template()"
