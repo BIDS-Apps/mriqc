@@ -43,4 +43,7 @@ RUN conda config --add channels conda-forge && \
     python -c "from matplotlib import font_manager" && \
     python -c "from mriqc.data import get_mni_template; get_mni_template()"
 
-ENTRYPOINT ["mriqc"]
+COPY run_mriqc.sh /run_mriqc
+COPY version /version
+
+ENTRYPOINT ["/run_mriqc"]
