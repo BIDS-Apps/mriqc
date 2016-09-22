@@ -37,12 +37,14 @@ ENV PATH /usr/local/miniconda/bin:$PATH
 
 # Create conda environment, use nipype's conda-forge channel
 RUN conda config --add channels conda-forge && \
-    conda install -y numpy scipy lockfile matplotlib && \
-    pip install mriqc[all] && \
-    python -c "from matplotlib import font_manager" && \
-    python -c "from mriqc.data import get_mni_template; get_mni_template()"
+    conda install -y numpy scipy matplotlib pandas lxml dipy scikit-learn && \
+    pip install -e git+https://github.com/nipy/nipype.git@master#egg=nipype && \
+    python -c "from matplotlib import font_manager"
 
-COPY run_mriqc.sh /run_mriqc
 COPY version /version
+COPY run_mriqc.sh /run_mriqc
+
+RUN pip install mriqc[all] && \
+    python -c "from mriqc.data import get_mni_template; get_mni_template()"
 
 ENTRYPOINT ["/run_mriqc"]
