@@ -28,5 +28,3 @@
 FROM poldracklab/mriqc:0.9.3
 
 COPY version /version
-COPY run_mriqc.sh /run_mriqc
-ENTRYPOINT ["/run_mriqc"]
