@@ -1,4 +1,4 @@
-#!/bin/bash
-source /etc/fsl/fsl.sh
-source /etc/afni/afni.sh
-mriqc $@
+#!/bin/sh
+
+echo "This image has moved to poldracklab/mriqc"
+exit 1
